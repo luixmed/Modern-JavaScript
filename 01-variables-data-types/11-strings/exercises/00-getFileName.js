@@ -4,14 +4,11 @@ function getFileName(fileName) {
   }
 
   const lowerCaseArray = fileName.toLowerCase().split(" ");
-  const firstChar = lowerCaseArray[0].charAt(0);
+  let number = +lowerCaseArray[0].slice(0, -1);
 
-  // Ensure the first character is a digit and prepend '0'
-  const number = `0${firstChar}`;
+  if (number < 9) lowerCaseArray[0] = `0${number}`;
 
-  const words = lowerCaseArray.slice(1).join("-");
-
-  return `${number}-${words}.js`;
+  return lowerCaseArray.join("-");
 }
 
-console.log(getFileName("3: Check for Palindrome"));
+console.log(getFileName("5: Remove All Occurrences of a Given Character"));
